@@ -1,0 +1,14 @@
+/*
+ * Approved deviations from the original Astro/Webflow design.
+ * The Webflow CSS (normalize/base/app/site.css) stays verbatim; every
+ * intentional change lives here, scoped as narrowly as possible.
+ */
+
+/* Footer quick links (approved 2026-11-11): at 768–991px the original 1fr/1fr
+   grid squeezes the links column so every link wraps onto two lines. Keep each
+   link on one line in that range only; other widths are unchanged. */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .footer-link {
+    white-space: nowrap;
+  }
+}

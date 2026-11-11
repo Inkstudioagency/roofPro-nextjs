@@ -1,0 +1,52 @@
+// One Service record. Keys are the camelCased CSV headers of cms/services.csv
+// (identical in data/services.json and the Strapi `service` collection).
+// Every value is a string; empty string = field left blank.
+export type Service = {
+  serviceTitle: string;
+  slug: string;
+  collectionId: string;
+  localeId: string;
+  itemId: string;
+  archived: string;
+  draft: string;
+  createdOn: string;
+  updatedOn: string;
+  publishedOn: string;
+  serviceDescription: string;
+  serviceItemIcon: string;
+  serviceThumbnail1: string;
+  serviceHoverIcon: string;
+  serviceThumbnail2: string;
+  serviceMainImage: string;
+  serviceOverview: string;
+  overviewImage1: string;
+  overviewImage2: string;
+  overviewImage3: string;
+  overviewImage4: string;
+  whatOfferSectionSummary: string;
+  whatOfferPoint1: string;
+  whatOfferPointIcon1: string;
+  whatOfferPoint2: string;
+  whatOfferPointIcon2: string;
+  whatOfferPoint3: string;
+  whatOfferPointIcon3: string;
+  whatOfferPoint4: string;
+  whatOfferPointIcon4: string;
+  whatOfferPoint5: string;
+  whatOfferPointIcon5: string;
+  whatOfferPoint6: string;
+  whatOfferPointIcon6: string;
+  whatOfferPoint7: string;
+  whatOfferPointIcon7: string;
+  whatOfferPoint8: string;
+  whatOfferPointIcon8: string;
+  whatOfferPoint9: string;
+  whatOfferPointIcon9: string;
+  keyBenefitSummary: string;
+  keyBenefitPoint1: string;
+  keyBenefitPoint2: string;
+  keyBenefitPoint3: string;
+  keyBenefitPoint4: string;
+  keyBenefitPoint5: string;
+  keyBenefitPoint6: string;
+};
