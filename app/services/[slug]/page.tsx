@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import WebflowPage from "@/components/webflow/WebflowPage";
 import CtaTwoSection from "@/components/sections/shared/CtaTwoSection";
 import { getService, getServices } from "@/lib/content";
-import { pageMetadata } from "@/lib/site";
+import { NOT_FOUND_TITLE, pageMetadata } from "@/lib/site";
 import type { Service } from "@/types/service";
 
 // Astro: src/pages/services/[slug].astro — one static page per service.
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const s = await getService((await params).slug);
-  if (!s) return {};
+  // Unknown slug: the 404 page renders, so use its title (as on the Astro site).
+  if (!s) return pageMetadata({ title: NOT_FOUND_TITLE });
   return pageMetadata({ title: `${s.serviceTitle} || Roofing Services Website Template`, description: s.serviceDescription });
 }
 

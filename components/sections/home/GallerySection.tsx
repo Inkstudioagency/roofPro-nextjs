@@ -1,4 +1,4 @@
-// GallerySection: converted 1:1 from the Astro template (pages/index.astro, section_gallery before/after (drag behaviour from the inline script is added in Phase 4)).
+// GallerySection: converted 1:1 from the Astro template (pages/index.astro, section_gallery before/after — drag behaviour: components/interactive/BeforeAfterGallery).
 // Astro compresses template whitespace, so no inter-tag whitespace is emitted.
 
 export default function GallerySection() {

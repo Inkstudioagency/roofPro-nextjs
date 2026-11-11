@@ -15,6 +15,9 @@ import PricingSection from "@/components/sections/home/PricingSection";
 import TestimonialSection from "@/components/sections/home/TestimonialSection";
 import FaqSection from "@/components/sections/home/FaqSection";
 import CtaSection from "@/components/sections/home/CtaSection";
+import MaterialsTabs from "@/components/interactive/MaterialsTabs";
+import ExpertiseAccordion from "@/components/interactive/ExpertiseAccordion";
+import BeforeAfterGallery from "@/components/interactive/BeforeAfterGallery";
 import { getServices, getWorks } from "@/lib/content";
 import { DEFAULT_TITLE, pageMetadata } from "@/lib/site";
 
@@ -22,7 +25,10 @@ import { DEFAULT_TITLE, pageMetadata } from "@/lib/site";
 // CMS sections (Services, Works), which render from CMS data; the Materials,
 // Before & After, Estimator and Pricing sections come from the Astro template.
 // The {" "} nodes reproduce the whitespace of the raw Webflow segments exactly
-// (template parts are whitespace-compressed by Astro).
+// (template parts are whitespace-compressed by Astro). MaterialsTabs,
+// ExpertiseAccordion and BeforeAfterGallery render nothing: they sit where the
+// Astro inline <script>s were and run the same code after hydration (the
+// Estimator's script is ported into EstimatorSection itself).
 export const metadata: Metadata = pageMetadata({ title: DEFAULT_TITLE });
 
 export default async function Home() {
@@ -35,11 +41,14 @@ export default async function Home() {
         <LogoSection />{" "}
         <ServiceSection services={services} />
         <MaterialsSection />
+        <MaterialsTabs />
         <AboutSection />{" "}
         <ExpertiseSection />{" "}
         <ProcessSection />{" "}
         <WhyChooseSection />{" "}
+        <ExpertiseAccordion />
         <GallerySection />
+        <BeforeAfterGallery />
         <OurWorkSection works={works} />
         <EstimatorSection />
         <PricingSection />

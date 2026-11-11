@@ -10,6 +10,9 @@ export const DEFAULT_DESCRIPTION =
 
 export const DEFAULT_OG_IMAGE = "/images/og-image-1200x630.jpg";
 
+/** Title of the Astro 404 page (src/pages/404.astro). */
+export const NOT_FOUND_TITLE = "Not Found || Roofing Services Website Template";
+
 /**
  * Per-page metadata that reproduces the Astro <head>: title, description,
  * og:title/description/image/type and twitter:card/title/description/image.

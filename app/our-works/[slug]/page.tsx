@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import WebflowPage from "@/components/webflow/WebflowPage";
 import { getWork, getWorks } from "@/lib/content";
 import { formatDate } from "@/lib/format";
-import { pageMetadata } from "@/lib/site";
+import { NOT_FOUND_TITLE, pageMetadata } from "@/lib/site";
 
 // Astro: src/pages/our-works/[slug].astro — one static page per work.
 // Unknown slugs render the 404 page (Astro generated no page for them).
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/our-works/[slug]">): Promise<Metadata> {
   const w = await getWork((await params).slug);
-  if (!w) return {};
+  // Unknown slug: the 404 page renders, so use its title (as on the Astro site).
+  if (!w) return pageMetadata({ title: NOT_FOUND_TITLE });
   return pageMetadata({ title: `${w.workCardTitle} || Roofing Services Website Template`, description: w.workCardDescription });
 }
 

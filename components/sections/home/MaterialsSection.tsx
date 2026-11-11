@@ -1,4 +1,4 @@
-// MaterialsSection: converted 1:1 from the Astro template (pages/index.astro, section_materials (tab behaviour from the inline script is added in Phase 4)).
+// MaterialsSection: converted 1:1 from the Astro template (pages/index.astro, section_materials — tab behaviour: components/interactive/MaterialsTabs).
 // Astro compresses template whitespace, so no inter-tag whitespace is emitted.
 
 export default function MaterialsSection() {
