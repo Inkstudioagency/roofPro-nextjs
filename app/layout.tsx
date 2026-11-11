@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Manrope } from "next/font/google";
 
 // Original stylesheet order from the Astro layout: normalize → Webflow base →
@@ -14,7 +13,6 @@ import "@/styles/overrides.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WebflowRuntimeScript from "@/components/webflow/WebflowRuntimeScript";
 import { getServices, getWorks } from "@/lib/content";
 import { DEFAULT_TITLE, SITE_URL, pageMetadata } from "@/lib/site";
 import { WF_MOD_SCRIPT, WF_PAGE_BOOT_SCRIPT } from "@/lib/wf-pages";
@@ -59,10 +57,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           {children}
           <Footer />
         </div>
-        {/* Webflow runtime: jQuery first, then site.js (nav, sliders, tabs,
-            dropdowns, forms, IX2 animations), which runs after hydration. */}
-        <Script src="/js/jquery.min.js" strategy="beforeInteractive" />
-        <WebflowRuntimeScript />
+        {/* Webflow runtime (jQuery + site.js: nav, sliders, tabs, dropdowns,
+            forms, IX2 animations) is injected by <WebflowPage> after hydration. */}
       </body>
     </html>
   );

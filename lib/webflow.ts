@@ -33,6 +33,34 @@ export function notifyIx2(): void {
   if (document.readyState !== "complete") window.addEventListener("load", fire, { once: true });
 }
 
+let runtimeRequested = false;
+
+function appendScript(src: string, onload?: () => void): void {
+  const script = document.createElement("script");
+  script.src = src;
+  // Dynamically inserted scripts with async=false execute in insertion order,
+  // so jQuery always runs before site.js (same order as the Astro layout).
+  script.async = false;
+  if (onload) script.onload = onload;
+  document.body.appendChild(script);
+}
+
+/**
+ * Inject jQuery + the Webflow runtime (/js/site.js) once. Called from
+ * <WebflowPage>'s effect, i.e. only after React has finished hydrating the
+ * page: site.js mutates the DOM immediately (slider dots, tabs roles, IX2
+ * styles), and doing that mid-hydration makes React discard the server HTML
+ * and re-render it, losing every Webflow binding. Nothing needs jQuery before
+ * that point, so both are loaded here (this also covers 404 responses, where
+ * Next does not emit `beforeInteractive` scripts).
+ */
+export function loadWebflowRuntime(): void {
+  if (runtimeRequested || window.__wfx) return;
+  runtimeRequested = true;
+  if (!("jQuery" in window)) appendScript("/js/jquery.min.js");
+  appendScript("/js/site.js", notifyIx2);
+}
+
 /**
  * Re-bind every Webflow module (navbar, dropdown, slider, tabs, forms, links,
  * scroll, touch) and restart the IX2 interaction engine against the current
