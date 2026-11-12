@@ -12,3 +12,14 @@
     white-space: nowrap;
   }
 }
+
+/* Faster button hover (approved 2026-11-12): the V2 site.css gives every
+   .button-text a `transition: transform .35s`, which smooths each frame the
+   Webflow IX2 hover animation writes and stretches the text slide to ~940ms.
+   Where IX2 drives the text (it writes an inline `transform`), let IX2 run at
+   its own speed (~590ms). Buttons without an IX2 hover (no inline transform)
+   keep site.css's CSS-only animation (~380ms). Background colours unchanged. */
+.button-text.is-1[style*="transform"],
+.button-text.is-2[style*="transform"] {
+  transition: none;
+}

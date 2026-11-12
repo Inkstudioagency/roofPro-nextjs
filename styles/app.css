@@ -465,7 +465,7 @@ figure {
   letter-spacing: .5px;
   border-radius: 8px;
   padding: 16px 46px;
-  transition: transform .6s, background-color .4s;
+  transition: transform .6s, background-color .2s;
 }
 
 .primary-button:where(.w-variant-31a4406c-d7df-fddb-f13e-d0c119ad0940) {
@@ -530,7 +530,7 @@ figure {
   letter-spacing: .5px;
   border-radius: 8px;
   padding: 16px 46px;
-  transition: background-color .4s, color .4s, transform .6s;
+  transition: background-color .2s, color .2s, transform .6s;
 }
 
 .secondary-button:where(.w-variant-85a64691-fa29-aa50-59ed-622e1687be9b) {
